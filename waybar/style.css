@@ -1,0 +1,140 @@
+* {
+    /* `otf-font-awesome` is required to be installed for icons */
+    font-family: JetbrainsMono;
+    font-size: 16px;
+}
+
+@define-color bar-bg rgba(11, 13, 21, 0.84);
+@define-color panel-bg rgba(34, 38, 54, 0.72);
+@define-color panel-hover rgba(71, 91, 102, 0.78);
+@define-color text #E9FBF8;
+@define-color muted #A9D8D2;
+@define-color cyan #61E9FF;
+@define-color mint #A6F2C2;
+@define-color pink #FF6FAC;
+@define-color violet #B880FF;
+@define-color lime #B8FF57;
+@define-color coral #FF6B78;
+
+window#waybar {
+    background-color: @bar-bg;
+    border-bottom: 1px solid rgba(97, 233, 255, 0.34);
+    color: @text;
+}
+
+button {
+    /* Use box-shadow instead of border so the text isn't offset */
+    box-shadow: inset 0 -1px transparent;
+    /* Avoid rounded borders under each button name */
+    border: none;
+    border-radius: 0;
+}
+
+/* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
+button:hover {
+    background: inherit;
+    box-shadow: inset 0 -1px @cyan;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    background-color: transparent;
+    color: @muted;
+}
+
+#workspaces button:hover {
+    background: @panel-hover;
+    color: @text;
+}
+
+#workspaces button.focused,
+#workspaces button.active {
+    background-color: rgba(255, 111, 172, 0.22);
+    color: @text;
+    box-shadow: inset 0 -2px @pink;
+}
+
+#workspaces button.urgent {
+    background-color: @coral;
+    color: #160A11;
+}
+
+#mode {
+    background-color: rgba(184, 255, 87, 0.18);
+    color: @lime;
+    border-bottom: 3px solid @lime;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#disk,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#wireplumber,
+#custom-media,
+#tray,
+#idle_inhibitor,
+#scratchpad {
+    padding: 0 8px;
+    color: @text;
+    background-color: @panel-bg;
+    border-bottom: 2px solid rgba(97, 233, 255, 0.16);
+}
+
+#window,
+#workspaces {
+    margin: 0 4px;
+}
+
+#workspaces {
+    background-color: @panel-bg;
+    border-bottom: 2px solid rgba(255, 111, 172, 0.16);
+}
+
+#window {
+    color: @muted;
+}
+
+#clock {
+    color: @cyan;
+}
+
+#pulseaudio {
+    color: @pink;
+}
+
+#network {
+    color: @mint;
+}
+
+#memory {
+    color: @violet;
+}
+
+#battery {
+    color: @lime;
+}
+
+#battery.warning {
+    color: @pink;
+}
+
+#battery.critical {
+    background-color: @coral;
+    color: #160A11;
+}
+
+@keyframes blink {
+    to {
+        background-color: @pink;
+        color: #160A11;
+    }
+}
+
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 0;
+}
