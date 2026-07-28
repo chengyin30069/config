@@ -1,9 +1,9 @@
 {
     "height": 25,
     "spacing": 4, 
-    "modules-left": ["hyprland/workspaces", "hyprland/mode"],
+    "modules-left": ["hyprland/workspaces"],
     "modules-center": ["hyprland/window"],
-    "modules-right": ["pulseaudio", "mpris", "network", "memory", "battery", "clock"],
+    "modules-right": ["pulseaudio", "mpris", "network", "battery", "clock"],
     "hyprland/mode": {
         "format": "<span style=\"italic\">{}</span>"
     },
@@ -38,11 +38,8 @@
     "clock": {
         "interval": 1,
         "timezone": "Asia/Taipei",
-        "format": " {:%Y-%m-%d |  %T}",
+        "format": " {:%Y-%m-%d  %T}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
-    },
-    "memory": {
-        "format": "󰍛 {}%"
     },
     "battery": {
         "states": {
@@ -58,7 +55,7 @@
 	"tooltip-format-charging": "Fully charged in {time}"
     },
     "network": {
-        "format-wifi": "  {essid:.10} ({signalStrength}%)",
+        "format-wifi": " {essid:.8} ({signalStrength}%)",
         "format-ethernet": "󰈀 {ipaddr}/{cidr}",
         "tooltip-format": "{ifname} via {gwaddr}",
         "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname} via {gwaddr}",
