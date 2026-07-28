@@ -74,6 +74,7 @@ button:hover {
 #backlight,
 #network,
 #pulseaudio,
+#mpris,
 #wireplumber,
 #custom-media,
 #tray,
@@ -105,6 +106,10 @@ button:hover {
 
 #pulseaudio {
     color: @pink;
+}
+
+#mpris {
+    color: @cyan;
 }
 
 #network {
