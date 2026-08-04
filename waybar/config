@@ -2,7 +2,7 @@
     "height": 25,
     "spacing": 4, 
     "modules-left": ["hyprland/window"],
-    "modules-center": ["hyprland/workspaces"],
+    "modules-center": ["ext/workspaces"],
     "modules-right": ["pulseaudio", "mpris", "network", "battery", "clock"],
     "hyprland/mode": {
         "format": "<span style=\"italic\">{}</span>"
@@ -14,11 +14,10 @@
         "tooltip": true,
         "tooltip-format": "{app}: {title}"
     },
-    "hyprland/workspaces": {
-         "disable-scroll": true,
+    "ext/workspaces": {
          "all-outputs": true,
-         "warp-on-scroll": false,
-         "format": "<span style=\"normal\">{}</span>"
+         "on-click": "activate",
+         "format": "<span style=\"normal\">{name}</span>"
     },
 	// "custom/change_bg": {
 	// 	"format": "",
