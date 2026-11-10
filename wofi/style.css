@@ -2,7 +2,7 @@
 	font-family: "Hack", monospace;
 }
 
-@define-color bg rgba(11, 13, 21, 0.94);
+@define-color bg #0b0d15;
 @define-color panel rgba(34, 38, 54, 0.88);
 @define-color panel-hover rgba(71, 91, 102, 0.58);
 @define-color text #E9FBF8;
@@ -15,7 +15,7 @@
 window {
 	background-color: @bg;
 	border: 1px solid rgba(97, 233, 255, 0.5);
-	border-radius: 8px;
+	border-radius: 12px;
 }
 
 #input {
@@ -57,7 +57,7 @@ window {
 }
 
 #entry:selected {
-	background-color: rgba(255, 111, 172, 0.72);
+	background-color: rgba(255, 111, 172, 0.25);
 	border-radius: 6px;
 }
 
@@ -65,3 +65,5 @@ window {
 	background: transparent;
 	color: #FFFFFF;
 }
+
+#entry { border-radius: 6px; transition: background-color 140ms ease; }

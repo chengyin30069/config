@@ -1,0 +1,17 @@
+{
+  "currentThemeName": "custom",
+  "customThemeFile": "/home/linus/.config/dms/hypr-theme.json",
+  "lockBeforeSuspend": true,
+  "acLockTimeout": 300,
+  "acMonitorTimeout": 330,
+  "acSuspendTimeout": 0,
+  "batteryLockTimeout": 300,
+  "batteryMonitorTimeout": 330,
+  "batterySuspendTimeout": 0,
+  "dmsWindowsFloatingSeeded": [
+    "niri"
+  ],
+  "configVersion": 42,
+  "audioMono": true,
+  "useAutoLocation": true
+}

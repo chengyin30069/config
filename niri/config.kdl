@@ -1,0 +1,130 @@
+// Hyprland-inspired niri session; see README.md.
+input {
+ keyboard { xkb { layout "us"; }; }
+ touchpad { tap; natural-scroll; scroll-factor 0.5; }
+ mouse { accel-speed 0.5; }
+ focus-follows-mouse max-scroll-amount="0%"
+}
+output "eDP-1" { scale 2; }
+cursor { xcursor-theme "breeze_cursors"; xcursor-size 24; }
+environment {
+ QT_QPA_PLATFORM "wayland"
+ QT_QPA_PLATFORMTHEME "qt6ct"
+ QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+ QT_AUTO_SCREEN_SCALE_FACTOR "1"
+ TERMINAL "kitty"
+}
+layout {
+ gaps 10
+ default-column-width { proportion 1.0; }
+ preset-column-widths { proportion 1.0; }
+ center-focused-column "always"
+ default-column-display "tabbed"
+ tab-indicator { off; }
+ focus-ring { off; }
+ border {
+  width 2
+  active-gradient from="#33ccffee" to="#00ff99ee" angle=45
+  inactive-color "#595959aa"
+ }
+ background-color "#0b0d15"
+}
+// Draw borders only around windows, never behind transparent content.
+window-rule { geometry-corner-radius 5; clip-to-geometry true; draw-border-with-background false; }
+// Keep background brightness stable when launcher takes keyboard focus.
+window-rule { opacity 1.0; }
+window-rule {
+ exclude app-id="^wofi$"
+ open-maximized-to-edges true
+}
+window-rule {
+ match app-id="^wofi$"
+ open-floating true
+ default-column-width { fixed 600; }
+ default-window-height { fixed 450; }
+ border { off; }
+ geometry-corner-radius 12
+}
+animations {
+ window-open { duration-ms 180; curve "ease-out-cubic"; }
+ window-close { duration-ms 140; curve "ease-out-cubic"; }
+}
+screenshot-path "~/圖片/Screenshots/Screenshot-%Y-%m-%d-%H-%M-%S.png"
+spawn-at-startup "sh" "-c" "mkdir -p ~/圖片/Screenshots; dms run & sleep 4; dms ipc call wallpaper set /home/linus/圖片/101245774_p0.jpg"
+spawn-at-startup "fcitx5"
+spawn-at-startup "copyq" "--start-server"
+workspace "1"
+workspace "2"
+workspace "3"
+workspace "4"
+workspace "5"
+workspace "6"
+workspace "7"
+workspace "8"
+workspace "9"
+workspace "10"
+workspace "magic"
+binds {
+ Mod+Shift+H hotkey-overlay-title="快捷鍵提示" { spawn "dms" "ipc" "call" "keybinds" "toggle" "niri"; }
+ Mod+Return { spawn "kitty"; }
+ Mod+Space { spawn "wofi" "--show" "drun"; }
+ Mod+Shift+C { close-window; }
+ Mod+Shift+Q { quit; }
+ Mod+Ctrl+Space { toggle-window-floating; }
+ Mod+X { spawn "dms" "ipc" "call" "powermenu" "toggle"; }
+ Mod+F { fullscreen-window; }
+ Mod+M hotkey-overlay-title="同步最大化所有視窗（保留工作列）" { spawn "python3" "/home/linus/.config/niri/scripts/maximize-all.py"; }
+ Mod+Shift+S { screenshot; }
+ Mod+Shift+N { spawn "dms" "ipc" "call" "notifications" "toggle"; }
+ Mod+H { focus-column-left; }
+ Mod+L { focus-column-right; }
+ Mod+K { focus-window-up; }
+ Mod+J { focus-window-down; }
+ Mod+Right { focus-workspace-down; }
+ Mod+Left { focus-workspace-up; }
+ Mod+T { focus-workspace "magic"; }
+ Mod+Shift+T { move-window-to-workspace "magic"; }
+ Mod+Tab { focus-workspace-previous; }
+ Mod+O { toggle-overview; }
+ Mod+Alt+L { spawn "dms" "ipc" "call" "lock" "lock"; }
+ Mod+R { switch-preset-column-width; }
+ Mod+BracketLeft { focus-column-left; }
+ Mod+BracketRight { focus-column-right; }
+ Print { screenshot; }
+ Ctrl+Print { screenshot-screen; }
+ Alt+Print { screenshot-window; }
+ Mod+1 { focus-workspace "1"; }
+ Mod+Shift+1 { move-window-to-workspace "1"; }
+ Mod+2 { focus-workspace "2"; }
+ Mod+Shift+2 { move-window-to-workspace "2"; }
+ Mod+3 { focus-workspace "3"; }
+ Mod+Shift+3 { move-window-to-workspace "3"; }
+ Mod+4 { focus-workspace "4"; }
+ Mod+Shift+4 { move-window-to-workspace "4"; }
+ Mod+5 { focus-workspace "5"; }
+ Mod+Shift+5 { move-window-to-workspace "5"; }
+ Mod+6 { focus-workspace "6"; }
+ Mod+Shift+6 { move-window-to-workspace "6"; }
+ Mod+7 { focus-workspace "7"; }
+ Mod+Shift+7 { move-window-to-workspace "7"; }
+ Mod+8 { focus-workspace "8"; }
+ Mod+Shift+8 { move-window-to-workspace "8"; }
+ Mod+9 { focus-workspace "9"; }
+ Mod+Shift+9 { move-window-to-workspace "9"; }
+ Mod+0 { focus-workspace "10"; }
+ Mod+Shift+0 { move-window-to-workspace "10"; }
+ Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+ Mod+WheelScrollUp cooldown-ms=150 { focus-workspace-up; }
+ XF86AudioRaiseVolume allow-when-locked=true { spawn "amixer" "-D" "pulse" "sset" "Master" "5%+"; }
+ XF86AudioLowerVolume allow-when-locked=true { spawn "amixer" "-D" "pulse" "sset" "Master" "5%-"; }
+ XF86AudioMute allow-when-locked=true { spawn "amixer" "-D" "pulse" "set" "Master" "toggle"; }
+ XF86AudioMicMute allow-when-locked=true { spawn "pactl" "set-source-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle"; }
+ XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "s" "10%+"; }
+ XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "s" "10%-"; }
+ Alt+Shift+bracketleft allow-when-locked=true { spawn "brightnessctl" "s" "5%-"; }
+ Alt+Shift+bracketright allow-when-locked=true { spawn "brightnessctl" "s" "+5%"; }
+ XF86AudioNext allow-when-locked=true { spawn "playerctl" "next"; }
+ XF86AudioPrev allow-when-locked=true { spawn "playerctl" "previous"; }
+ XF86AudioPlay allow-when-locked=true { spawn "playerctl" "play-pause"; }
+ XF86AudioPause allow-when-locked=true { spawn "playerctl" "play-pause"; }
+}

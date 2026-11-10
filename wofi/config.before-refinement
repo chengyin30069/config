@@ -1,0 +1,7 @@
+show=drun
+width=600
+height=450
+allow_images=true
+term=kitty
+insensitive=true
+prompt=搜尋應用程式
