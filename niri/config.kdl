@@ -35,7 +35,7 @@ window-rule { geometry-corner-radius 5; clip-to-geometry true; draw-border-with-
 window-rule { opacity 1.0; }
 window-rule {
  exclude app-id="^wofi$"
- open-maximized-to-edges true
+ open-maximized-to-edges false
 }
 window-rule {
  match app-id="^wofi$"
@@ -78,10 +78,12 @@ binds {
  Mod+Shift+N { spawn "dms" "ipc" "call" "notifications" "toggle"; }
  Mod+H { focus-column-left; }
  Mod+L { focus-column-right; }
- Mod+K { focus-window-up; }
- Mod+J { focus-window-down; }
- Mod+Right { focus-workspace-down; }
- Mod+Left { focus-workspace-up; }
+ Mod+K { focus-workspace-up; }
+ Mod+J { focus-workspace-down; }
+ Mod+Right { focus-column-right; }
+ Mod+Left { focus-column-left; }
+ Mod+Down { focus-workspace-down; }
+ Mod+Up { focus-workspace-up; }
  Mod+T { focus-workspace "magic"; }
  Mod+Shift+T { move-window-to-workspace "magic"; }
  Mod+Tab { focus-workspace-previous; }
